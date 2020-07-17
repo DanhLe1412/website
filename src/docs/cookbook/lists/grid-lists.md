@@ -12,16 +12,16 @@ js:
     url: https://dartpad.dev/inject_embed.dart.js
 ---
 
-In some cases, you might want to display your items as a grid rather than
-a normal list of items that come one after the next.
-For this task, use the [`GridView`][] widget.
+Trong vài trường hợp, bạn muốn hiển thị items dưới dạng lứoi hơn 
+là hiển thị dưới dạng danh sách liên tiếp nhau.
+Với nhiệm vụ này, ta sẽ dùng [`GridView`][] widget.
 
-The simplest way to get started using grids is by using the
+Cách đơn giản để bắt đầu dùng hiển thị dạng lưới là dùng
 [`GridView.count()`][] constructor,
-because it allows you to specify how many rows or columns you'd like.
+nó sẽ cho phép bạn tùy chỉnh số dòng và cột tùy thích.
 
-To visualize how `GridView` works,
-generate a list of 100 widgets that display their index in the list.
+Để hình dung cách `GridView` hoạt động,
+khởi tạo danh sách danh sách 100 widgets hiển thị trong một danh sách.
 
 <!-- skip -->
 ```dart
