@@ -12,35 +12,32 @@ js:
     url: https://dartpad.dev/inject_embed.dart.js
 ---
 
-The [`Navigator`][] provides the ability to navigate
-to a named route from any part of an app using
-a common identifier.
-In some cases, you might also need to pass arguments to a
-named route. For example, you might wish to navigate to the `/user` route and
-pass information about the user to that route.
+[`Navigator`][] cung cấp khả năng chuyển đổi đến named route
+từ bất kì phần nào trong ứng dụng bằng cách sử dụng đặc điểm nhận dạng chung  .
+Trong nhiều trường hợp, bạn có thể chuyển dổi named route. Ví dụ, bạn muốn chuyển đến  `/user` route và
+chuyển thông tin người dùng đến route đó.
 
-You can accomplish this task using the `arguments` parameter of the
-[`Navigator.pushNamed()`][] method. Extract the arguments using the
-[`ModalRoute.of()`][] method or inside an [`onGenerateRoute()`][]
-function provided to the [`MaterialApp`][] or [`CupertinoApp`][]
-constructor.
+Bạn có thể đạt được mục đích bằng `arguments` parameter của phương thức
+[`Navigator.pushNamed()`][]. Trích xuất arguments bằng phương thức
+[`ModalRoute.of()`][] hoặc [`onGenerateRoute()`][]
+function được hỗ trợ bên trong để  cung cấp cho [`MaterialApp`][] hoặc [`CupertinoApp`][].
 
-This recipe demonstrates how to pass arguments to a named
-route and read the arguments using `ModalRoute.of()`
-and `onGenerateRoute()` using the following steps:
+Bài viết này trình bày cách truyền arguments tới  named
+route và đọc arguments bằng `ModalRoute.of()`
+và `onGenerateRoute()` thông qua các bước sau:
 
-  1. Define the arguments you need to pass.
-  2. Create a widget that extracts the arguments.
-  3. Register the widget in the `routes` table.
-  4. Navigate to the widget.
+  1. Xác định arguments bạn cần truyền.
+  2. Tạo widget để trích xuất arguments.
+  3. Đăng kí widget trong bảng `routes`.
+  4. Chuyển động sang widget.
 
-## 1. Define the arguments you need to pass
+## 1. Xác định arguments bạn cần truyền
 
-First, define the arguments you need to pass to the new route.
-In this example, pass two pieces of data:
-The `title` of the screen and a `message`.
+Đầu tiên, xác định arguments bạn cần truyền tới một route mới.
+Trong ví dụ này, ta truyền hai mảnh của data:
+`title` của màn hình và `message`.
 
-To pass both pieces of data, create a class that stores this information.
+Để truyền hai mảnh của data, tạo một class để chứa thông tin.
 
 <!-- skip -->
 ```dart
@@ -55,13 +52,13 @@ class ScreenArguments {
 }
 ```
 
-## 2. Create a widget that extracts the arguments
+## 2. Tạo widget để trích xuất arguments
 
-Next, create a widget that extracts and displays the
-`title` and `message` from the `ScreenArguments`.
-To access the `ScreenArguments`,
-use the [`ModalRoute.of()`][] method.
-This method returns the current route with the arguments.
+Tiếp theo, tạo widget để trích xuất và hiển thị
+`title` và `message` từ `ScreenArguments`.
+Để truy cập `ScreenArguments`,
+dùng phương thức [`ModalRoute.of()`][].
+Phương thức này sẽ return route hiện tại với arguments.
 
 <!-- skip -->
 ```dart
@@ -87,10 +84,10 @@ class ExtractArgumentsScreen extends StatelessWidget {
 }
 ```
 
-## 3. Register the widget in the `routes` table
+## 3. Đăng kí widget trong bảng `routes`
 
-Next, add an entry to the `routes` provided to the `MaterialApp` widget. The
-`routes` define which widget should be created based on the name of the route.
+Kế đến, thêm  `routes` để cung cáp cho `MaterialApp` widget. 
+`routes` xác định widget nên được tạo dựa trên name của route.
 
 <!-- skip -->
 ```dart
@@ -102,12 +99,12 @@ MaterialApp(
 ```
 
 
-## 4. Navigate to the widget
+## 4. Chuyển động sang widget.
 
-Finally, navigate to the `ExtractArgumentsScreen`
-when a user taps a button using [`Navigator.pushNamed()`][].
-Provide the arguments to the route via the `arguments` property. The
-`ExtractArgumentsScreen` extracts the `title` and `message` from these
+Cuối cùng, chuyển sang `ExtractArgumentsScreen`
+khi người dùng nhấn button bằng [`Navigator.pushNamed()`][].
+Cung cấp arguments cho route thông qua thuộc tính `arguments`. 
+`ExtractArgumentsScreen` trích xuất `title` và `message` từ các
 arguments.
 
 <!-- skip -->
@@ -131,14 +128,13 @@ RaisedButton(
 ),
 ```
 
-## Alternatively, extract the arguments using `onGenerateRoute`
+## Trích xuấ arguments bằng `onGenerateRoute`
 
-Instead of extracting the arguments directly inside the widget, you can also
-extract the arguments inside an [`onGenerateRoute()`][]
-function and pass them to a widget.
+Thay vì trích xuất arguments trực tiếp bên trong widget, bạn có thể trích xuất arguments bên trong [`onGenerateRoute()`][]
+function và truyền nó vào widget.
 
-The `onGenerateRoute()` function creates the correct route based on the given
-`RouteSettings`.
+`onGenerateRoute()` function tạo route chính xác dựa trên
+`RouteSettings` đã cho.
 
 <!-- skip -->
 ```dart
