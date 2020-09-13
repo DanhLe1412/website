@@ -12,30 +12,26 @@ js:
     url: https://dartpad.dev/inject_embed.dart.js
 ---
 
-In the [Navigate to a new screen and back][] recipe,
-you learned how to navigate to a new screen by creating a new route and
-pushing it to the [`Navigator`][].
+Trong bài viết [Navigate to a new screen and back][],
+bạn đã học cách chuyển động sang màn hình mới thông qua tạo route và sử dụng  [`Navigator`][].
 
-However, if you need to navigate to the same screen in many parts
-of your app, this approach can result in code duplication.
-The solution is to define a _named route_,
-and use the named route for navigation.
+Tuy nhiên, bạn muốn chuyển động cùng màn hình ở nhiều phần của app, bạn phải code nhiều lần, dẫn đến trùng lập về code. Cách giải quyết là ta phải xác định _named route_, và dùng name của route này để chuyển động.
 
-To work with named routes,
-use the [`Navigator.pushNamed()`][] function.
-This example replicates the functionality from the original recipe,
-demonstrating how to use named routes using the following steps:
+Để làm việc với name của routes,
+dùng [`Navigator.pushNamed()`][] function.
+Ví dụ này phỏng theo chức năng từ bài viết gốc,
+các cách làm việc với name routes:
 
-  1. Create two screens.
-  2. Define the routes.
-  3. Navigate to the second screen using `Navigator.pushNamed()`.
-  4. Return to the first screen using `Navigator.pop()`.
+  1. Tạo hai màn hình.
+  2. Xác định routes.
+  3. Chuyển động sang màn hình thứ hai bằng `Navigator.pushNamed()`.
+  4. Trở về màn hình thứ nhất thông qua `Navigator.pop()`.
 
-## 1. Create two screens
+## 1. Tạo hai màn hình
 
-First, create two screens to work with. The first screen contains a
-button that navigates to the second screen. The second screen contains a
-button that navigates back to the first.
+Đầu tiên, ta tạo hai màn hình để làm việc. Màn hình thứ nhất chứa 
+button để chuyển sang màn hình thứ hai. Màn hình thứ hai chứa
+button để chuyển về màn hình thứ nhất.
 
 ```dart
 class FirstScreen extends StatelessWidget {
@@ -77,15 +73,13 @@ class SecondScreen extends StatelessWidget {
 }
 ```
 
-## 2. Define the routes
+## 2. Xác định routes
 
-Next, define the routes by providing additional properties
-to the [`MaterialApp`][] constructor: the `initialRoute`
-and the `routes` themselves.
+Tiếp theo, xác định routes bằng cách cung cấp thuộc tính bổ sung cho hàm tạo [`MaterialApp`][] là:  `initialRoute`
+và `routes`.
 
-The `initialRoute` property defines which route the app should start with.
-The `routes` property defines the available named routes and the widgets
-to build when navigating to those routes.
+Thuộc tính `initialRoute` xác định route mà app sẽ bắt đầu.
+Thuộc tính `routes` xác định các name routes và các widget khi có chuyển động đến routes đó.
 
 <!-- skip -->
 ```dart
@@ -103,17 +97,16 @@ MaterialApp(
 ```
 
 {{site.alert.warning}}
-  When using `initialRoute`, **don't** define a `home` property.
+  Khi dùng `initialRoute`, **không được** define thuộc tính của `home`.
 {{site.alert.end}}
 
-## 3. Navigate to the second screen
+## 3. Chuyển động sang màn hình thứ hai
 
-With the widgets and routes in place, trigger navigation by using the
-[`Navigator.pushNamed()`][] method.
-This tells Flutter to build the widget defined in the
-`routes` table and launch the screen.
+Với các widgets và routes tại chỗ, hãy kích hoạt điều hướng bằng cách dùng phương thức
+[`Navigator.pushNamed()`][].
+Điều này sẽ cho Flutter biết để xây dựng widget và defined `routes` trong danh sách đã có và chạy trong màn hình.
 
-In the `build()` method of the `FirstScreen` widget, update the `onPressed()`
+Trong phương thức `build()` của `FirstScreen` widget, cập nhật `onPressed()`
 callback:
 
 <!-- skip -->
@@ -125,9 +118,9 @@ onPressed: () {
 }
 ```
 
-## 4. Return to the first screen
+## 4. Trở về màn hình đầu tiên
 
-To navigate back to the first screen, use the
+Để trở về màn hình đầu tiên, sử dụng
 [`Navigator.pop()`][] function.
 
 <!-- skip -->
